@@ -9,7 +9,7 @@ from telegram.ext import (
 
 TOKEN = "8424375544:AAFf6HPJ6geScdjUQj8pUfL8IRJLdwAhpXA"
 
-ADMIN_IDS = [6551603474]
+ADMIN_IDS = [1876989720, 8066760628, 1829917078, 77992860875]
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -143,3 +143,4 @@ app.add_handler(MessageHandler(filters.REPLY & filters.TEXT, admin_reply))
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, menu_handler))
 
 app.run_polling()
+
