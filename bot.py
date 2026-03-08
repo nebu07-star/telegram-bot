@@ -32,42 +32,47 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
     text = update.message.text.strip()
+    user = update.effective_user
 
     if text == "Lists ​📑​":
         await update.message.reply_text(
-            "💭 Catalogue:\n\n"
-            "ᥲ. ⍴rᥱmіᥙm m᥆᥎іᥱ ᥲᥴᥴᥱss\n⌗. Netflix\n⌗. Vidio\n⌗. Disney +\n⌗. YouTube\n⌗. Dramabox\n⌗. Loklok\n⌗. Bstation\n⌗. iQIYi\n⌗. WeTV\n⌗. Viu\n⌗. Vision Plus\n\n"
-            "ᑲ. ⍴rᥱmіᥙm mᥙsіᥴ ᥲᥴᥴᥱss\n⌗. Spotify\n⌗. Apple Music\n\n"
-            "ᥴ. ⍴rᥱmіᥙm s𝗍ᥙძᥡ ᥲᥴᥴᥱss\n⌗. ChatGPT\n⌗. Zoom\n⌗. Duolingo\n⌗. Brainly\n\n"
-            "ძ. ⍴rᥱmіᥙm rᥱᥲძіᥒg ᥲᥴᥴᥱss\n⌗. Wattpad\n⌗. Fizzo Novel\n⌗. Noveltoon\n\n"
-            "ᥱ. ⍴rᥱmіᥙm ᥱძі𝗍s ᥲᥴᥴᥱss\n⌗. Alight Motion\n⌗. Wink\n⌗. Capcut\n⌗. Canva\n⌗. Picsart\n\n"
-            "𝖿. ⍴rᥱmіᥙm 𝗍ᥱᥣᥱgrᥲm\n⌗. Resell Vilog (Via Login) \n⌗. Resell Gift (Via Gift) \n⌗. Pribadi Vilog (Via Login) \n⌗. Pribadi Gift (Via Gift)\n\n"
+         "💭 Catalogue:\n\n"             
+            "ᥲ. ⍴rᥱmіᥙm m᥆᥎іᥱ ᥲᥴᥴᥱss\n⌗. Netflix\n⌗. Vidio\n⌗. Disney +\n⌗. YouTube\n⌗. Dramabox\n⌗. Loklok\n⌗. Bstation\n⌗. iQIYi\n⌗. WeTV\n⌗. Viu\n⌗. Vision Plus\n\n"             
+            "ᑲ. ⍴rᥱmіᥙm mᥙsіᥴ ᥲᥴᥴᥱss\n⌗. Spotify\n⌗. Apple Music\n\n"             
+            "ᥴ. ⍴rᥱmіᥙm s𝗍ᥙძᥡ ᥲᥴᥴᥱss\n⌗. ChatGPT\n⌗. Zoom\n⌗. Duolingo\n⌗. Brainly\n\n"             
+            "d. ⍴rᥱmіᥙm rᥱᥲძіᥒg ᥲᥴᥴᥱss\n⌗. Wattpad\n⌗. Fizzo Novel\n⌗. Noveltoon\n\n"             
+            "ᥱ. ⍴rᥱmіᥙm ᥱძі𝗍s ᥲᥴᥴᥱss\n⌗. Alight Motion\n⌗. Wink\n⌗. Capcut\n⌗. Canva\n⌗. Picsart\n\n"             
+            "𝖿. ⍴rᥱmіᥙm 𝗍ᥱᥣᥱgrᥲm\n⌗. Resell Vilog (Via Login) \n⌗. Resell Gift (Via Gift) \n⌗. Pribadi Vilog (Via Login) \n⌗. Pribadi Gift (Via Gift)\n\n"             
             "ᥴ᥆mᥱ sᥱᥱ 𝗍һіs ᑲᥱᥲᥙ𝗍і𝖿ᥙᥣ і𝗍ᥱm, sᥱᥱ 𝗍һᥱ ⍴rіᥴᥱᥣіs𝗍 ᥆ᥒ @oOmamories ᥲᥒძ ᥣᥱᥲ᥎ᥱ ᥡ᥆ᥙr mᥱssᥲgᥱ 𝗍᥆ @omamories ძ᥆ᥒ'𝗍 mіss ᥆𝗍һᥱr ᑲᥱᥲᥙ𝗍і𝖿ᥙᥣ і𝗍ᥱms 💻🖤"
         )
 
-elif text == "Contact Admin 💬":
-    context.user_data["admin_mode"] = True
-    ACTIVE_CHATS[update.effective_user.id] = True
+    elif text == "Contact Admin 💬":
 
-    await update.message.reply_text(
-        "Text here, we'll answer ASAP 💨"
-    )
+        context.user_data["admin_mode"] = True
+        ACTIVE_CHATS[user.id] = True
+
+        await update.message.reply_text(
+            "Text here, we'll answer ASAP 💨"
+        )
 
     elif text == "How To Order?💭":
+
         await update.message.reply_text(
-            "Cara order:\n"
-            "1. sᥙᑲs kᥱ @oOmamories ძᥲᥒ ⍴ᥲs𝗍іkᥲᥒ ȷ᥆іᥒ kᥱ @omamories 𝗍ᥱrᥱᥣᑲіһ ძᥲһᥙᥣᥙ\n\n"
-            "2. 𝗍ᥱᥒ𝗍ᥙkᥲᥒ ⍴r᥆ძᥙk ᥡᥲᥒg ᥲkᥲᥒ ძі ᑲᥱᥣі\n\n"
-            "3. ᥴᥱk kᥱ𝗍ᥱrsᥱძіᥲᥲᥒ ⍴r᥆ძᥙk ძᥱᥒgᥲᥒ mᥱmᥱᥒᥴᥱ𝗍 mᥱᥒᥙ 𝘊𝘰𝘯𝘵𝘢𝘤𝘵 𝘈𝘥𝘮𝘪𝘯  ძᥲᥒ 𝗍ᥙᥒggᥙ sᥲm⍴ᥲі ᥲძmіᥒ mᥱmᑲᥲᥣᥲs\n\n"
-            "4. ᥴ᥆ᥒ𝖿іrm ⍴ᥱsᥲᥒᥲᥒ ძgᥒ mᥱᥣᥲkᥙkᥲᥒ ⍴ᥲᥡmᥱᥒ𝗍 kᥱ @omamoripay\n\n"
-            "5. kіrіm sᥴrᥱᥱᥒsһ᥆᥆𝗍 ᑲᥙk𝗍і ⍴ᥱmᑲᥲᥡᥲrᥲᥒ ძᥲᥒ sᥱr𝗍ᥲkᥲᥒ ᥙsᥒ kᥲmᥙ\n\n"
+            "Cara order:\n"             
+            "1. sᥙᑲs kᥱ @oOmamories ძᥲᥒ ⍴ᥲs𝗍іkᥲᥒ ȷ᥆іᥒ kᥱ @omamories 𝗍ᥱrᥱᥣᑲіһ ძᥲһᥙᥣᥙ\n\n"             
+            "2. 𝗍ᥱᥒ𝗍ᥙkᥲᥒ ⍴r᥆ძᥙk ᥡᥲᥒg ᥲkᥲᥒ ძі ᑲᥱᥣі\n\n"             
+            "3. ᥴᥱk kᥱ𝗍ᥱrsᥱძіᥲᥲᥒ ⍴r᥆ძᥙk ძᥱᥒgᥲᥒ mᥱmᥱᥒᥴᥱ𝗍 mᥱᥒᥙ 𝘊𝘰𝘯𝘵𝘢𝘤𝘵 𝘈𝘥𝘮𝘪𝘯  ძᥲᥒ 𝗍ᥙᥒggᥙ sᥲm⍴ᥲі ᥲძmіᥒ mᥱmᑲᥲᥣᥲs\n\n"             
+            "4. ᥴ᥆ᥒ𝖿іrm ⍴ᥱsᥲᥒᥲᥒ ძgᥒ mᥱᥣᥲkᥙkᥲᥒ ⍴ᥲᥡmᥱᥒ𝗍 kᥱ @omamoripay\n\n"             
+            "5. kіrіm sᥴrᥱᥱᥒsһ᥆᥆𝗍 ᑲᥙk𝗍і ⍴ᥱmᑲᥲᥡᥲrᥲᥒ ძᥲᥒ sᥱr𝗍ᥲkᥲᥒ ᥙsᥒ kᥲmᥙ\n\n"             
             "6. ⍴ᥱsᥲᥒᥲᥒ sіᥲ⍴! ᥲძmіᥒ ᥲkᥲᥒ mᥱᥒgһᥲm⍴іrі r᥆᥆mᥴһᥲ𝗍mᥙ ᥙᥒ𝗍ᥙk mᥱᥒgіrіm ⍴ᥱsᥲᥒᥲᥒ, m᥆һ᥆ᥒ 𝗍ᥙᥒggᥙ~"
         )
 
     else:
+
         if context.user_data.get("admin_mode") and ACTIVE_CHATS.get(user.id):
-            user = update.effective_user
+
             message = update.message.text
 
             for admin_id in ADMIN_IDS:
@@ -78,11 +83,10 @@ elif text == "Contact Admin 💬":
                         f"👤 {user.first_name}\n"
                         f"🆔 {user.id}\n\n"
                         f"{message}\n\n"
-                        f"Reply by tapping this message.\n"
-                        f"Send /close {user.id} to close session."
+                        f"Reply message ini untuk balas.\n"
+                        f"Ketik /close sambil reply untuk tutup session."
                     )
                 )
-
 
 # 🔹 ADMIN REPLY TANPA KETIK ID
 async def admin_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -145,6 +149,7 @@ app.add_handler(MessageHandler(filters.REPLY & filters.TEXT, admin_reply))
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, menu_handler))
 
 app.run_polling()
+
 
 
 
