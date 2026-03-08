@@ -22,6 +22,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
 
     context.user_data["admin_mode"] = False
+    ACTIVE_CHATS[update.effective_user.id] = False
 
     await update.message.reply_text(
         "Hola, αm᥆𝗋𝗂𝖾𝗌❕\n"
@@ -145,13 +146,7 @@ app = ApplicationBuilder().token(TOKEN).build()
 
 app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("close", close_session))
-app.add_handler(MessageHandler(filters.REPLY & filters.TEXT, admin_reply))
+app.add_handler(MessageHandler(filters.REPLY & filters.TEXT & filters.User(ADMIN_IDS), admin_reply))
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, menu_handler))
 
 app.run_polling()
-
-
-
-
-
-
