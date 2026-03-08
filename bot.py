@@ -46,12 +46,13 @@ async def menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "ᥴ᥆mᥱ sᥱᥱ 𝗍һіs ᑲᥱᥲᥙ𝗍і𝖿ᥙᥣ і𝗍ᥱm, sᥱᥱ 𝗍һᥱ ⍴rіᥴᥱᥣіs𝗍 ᥆ᥒ @oOmamories ᥲᥒძ ᥣᥱᥲ᥎ᥱ ᥡ᥆ᥙr mᥱssᥲgᥱ 𝗍᥆ @omamories ძ᥆ᥒ'𝗍 mіss ᥆𝗍һᥱr ᑲᥱᥲᥙ𝗍і𝖿ᥙᥣ і𝗍ᥱms 💻🖤"
         )
 
-    elif text == "Contact Admin 💬":
-        context.user_data["admin_mode"] = True
+elif text == "Contact Admin 💬":
+    context.user_data["admin_mode"] = True
+    ACTIVE_CHATS[update.effective_user.id] = True
 
-        await update.message.reply_text(
-            "Text here, we'll answer ASAP 💨\n"
-        )
+    await update.message.reply_text(
+        "Text here, we'll answer ASAP 💨"
+    )
 
     elif text == "How To Order?💭":
         await update.message.reply_text(
@@ -65,7 +66,7 @@ async def menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
 
     else:
-        if context.user_data.get("admin_mode"):
+        if context.user_data.get("admin_mode") and ACTIVE_CHATS.get(user.id):
             user = update.effective_user
             message = update.message.text
 
@@ -123,10 +124,11 @@ async def close_session(update: Update, context: ContextTypes.DEFAULT_TYPE):
             try:
                 user_id = int(replied_text.split("🆔")[1].split("\n")[0].strip())
 
-                await context.bot.send_message(
+                ACTIVE_CHATS[user_id] = False
+                await context.bot.send_message( 
                     chat_id=user_id,
                     text="🔒 This chat session has been closed by admin."
-                )
+                )       
 
                 await update.message.reply_text("✅ Session closed.")
 
@@ -143,6 +145,7 @@ app.add_handler(MessageHandler(filters.REPLY & filters.TEXT, admin_reply))
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, menu_handler))
 
 app.run_polling()
+
 
 
 
